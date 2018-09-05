@@ -67,4 +67,4 @@ blocks:
 
 promotions:
   - name: Staging
-    pipeline_path: stg-dpl.yml
+    pipeline_file: stg-dpl.yml
