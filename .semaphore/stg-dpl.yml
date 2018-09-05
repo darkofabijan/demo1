@@ -1,0 +1,37 @@
+version: v1.0
+name: Deploy to staging
+agent:
+  machine:
+    type: e1-standard-2
+    os_image: ubuntu1804
+
+blocks:
+  - name: "Prepare for deploy"
+    task:
+      env_vars:
+        - name: APP_ENV
+          value: prod
+      jobs:
+      - name: Prepare for dpl
+        commands:
+          - checkout
+          - ls -1
+          - echo $APP_ENV
+          - echo "Docker build..."
+          - echo "done"
+
+  - name: "Execute deploy"
+    task:
+      jobs:
+      - name: Deploy
+        commands:
+          - checkout
+          - echo "make smoke"
+
+  - name: "Execute some tests"
+    task:
+      jobs:
+      - name: Smoke
+        commands:
+          - checkout
+          - echo "make smoke"
