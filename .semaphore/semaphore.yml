@@ -19,6 +19,9 @@ blocks:
           - echo $APP_ENV
           - echo "Docker build..."
           - echo "done"
+      - name: Another job with env var
+        commands:
+          - echo $APP_ENV
 
   - name: "Smoke tests"
     task:
